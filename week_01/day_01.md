@@ -25,3 +25,6 @@ void quick_sort(vector<int>& arr, int left, int right) {
     quick_sort(arr, j + 1, right); // 递归处理右区间
 }
 ```
+
+---
+
