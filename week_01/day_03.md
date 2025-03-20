@@ -106,3 +106,35 @@ for (int i = 0; i < n; i++) {
 ```
 
 ---
+
+## 实数域上的二分
+
+```c++
+// 查找第一个满足 is_blue 条件的元素的下标
+int find_first_blue(int left, int right) {
+    while (left < right) {
+        int pivot = (left + right) / 2;
+        if (is_blue(pivot)) {
+            right = pivot;
+        } else {
+            left = pivot + 1;
+        }
+    }
+    return left;
+}
+
+// 查找最后一个满足 is_red 条件的元素的下标
+int find_last_red(int left, int right) {
+    while (left < right) {
+        int pivot = (left + right + 1) / 2;
+        if (is_red(pivot)) {
+            left = pivot;
+        } else {
+            right = pivot - 1;
+        }
+    }
+    return left;
+}
+```
+
+---
