@@ -1,4 +1,4 @@
-## 一. 一维前缀和
+## 一维前缀和
 
 ```c++
 vector<int> computePrefixSum(const vector<int>& nums) {
@@ -17,7 +17,7 @@ int rangeSum(const vector<int>& prefix, int l, int r) {
 
 ---
 
-## 二. 二维前缀和
+## 二维前缀和
 ```c++
 vector<vector<int>> computePrefixSum(const vector<vector<int>>& matrix) {
     int rows = matrix.size();
