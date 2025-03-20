@@ -71,3 +71,38 @@ void restoreArray(vector<int>& diff) {
 
 ---
 
+## 二维差分
+
+```c++
+// 子矩阵更新操作
+void regionUpdate(vector<vector<int>>& diff, int x1, int y1, int x2, int y2, int value) {
+    diff[x1][y1] += value;          // 左上角加上 value
+    diff[x1][y2 + 1] -= value;      // 右上角减去 value
+    diff[x2 + 1][y1] -= value;      // 左下角减去 value
+    diff[x2 + 1][y2 + 1] += value;  // 右下角加上 value
+}
+
+// 还原原数组
+void restoreArray(vector<vector<int>>& diff, int n, int m) {
+    for (int i = 1; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            diff[i][j] += diff[i - 1][j];  // 从上到下累加
+        }
+    }
+    for (int j = 1; j < m; j++) {
+        for (int i = 0; i < n; i++) {
+            diff[i][j] += diff[i][j - 1];  // 从左到右累加
+        }
+    }
+}
+
+// 初始化差分数组
+vector<vector<int>> diff(n + 1, vector<int>(m + 1, 0));
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < m; j++) {
+        regionUpdate(diff, i, j, i, j, arr[i][j]);
+    }
+}
+```
+
+---
