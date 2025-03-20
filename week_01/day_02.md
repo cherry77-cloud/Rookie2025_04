@@ -29,7 +29,6 @@ string addHighPrecision(const string& s1, const string& s2) {
         carry = sumVal / BASE;
     }
 
-    // 将结果转换为字符串
     string resultStr;
     for (int i = result.size() - 1; i >= 0; i--) {
         if (i == result.size() - 1) {
@@ -96,7 +95,6 @@ string subtractHighPrecision(const string& s1, const string& s2) {
     while (result.size() > 1 && result.back() == 0)
         result.pop_back();
 
-    // 将结果转换为字符串
     string resultStr;
     for (int i = result.size() - 1; i >= 0; i--) {
         if (i == result.size() - 1) {
@@ -151,7 +149,6 @@ string multiplyHighPrecision(const string& s1, const string& s2) {
     while (result.size() > 1 && result.back() == 0)
         result.pop_back();
 
-    // 将结果转换为字符串
     string resultStr;
     for (int i = result.size() - 1; i >= 0; i--) {
         if (i == result.size() - 1) {
