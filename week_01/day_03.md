@@ -1,4 +1,4 @@
-## 一. 高精度加法
+## 高精度加法
 
 ```c++
 string addHighPrecision(const string& s1, const string& s2) {
@@ -47,7 +47,7 @@ string addHighPrecision(const string& s1, const string& s2) {
 
 ---
 
-## 二. 高精度减法
+## 高精度减法
 
 ```c++
 string subtractHighPrecision(const string& s1, const string& s2) {
@@ -112,7 +112,7 @@ string subtractHighPrecision(const string& s1, const string& s2) {
 }
 ```
 
-## 三. 高精度乘法
+## 高精度乘法
 
 ```c++
 string multiplyHighPrecision(const string& s1, const string& s2) {
@@ -169,7 +169,7 @@ string multiplyHighPrecision(const string& s1, const string& s2) {
 
 ---
 
-## 四. 高精度除法
+## 高精度除法
 
 ```c++
 pair<string, long long> divideHighPrecision(const string& dividend, long long divisor) {
