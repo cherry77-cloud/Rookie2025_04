@@ -107,7 +107,7 @@ for (int i = 0; i < n; i++) {
 
 ---
 
-## 实数域上的二分
+## 整数二分
 
 ```c++
 // 查找第一个满足 is_blue 条件的元素的下标
@@ -138,3 +138,33 @@ int find_last_red(int left, int right) {
 ```
 
 ---
+
+## 浮点数二分
+
+```c++
+double binary_search(double left, double right) {
+    const double eps = 1e-7;
+    while (right - left > eps) {
+        double mid = (left + right) / 2;
+        if (check(mid)) {
+            right = mid;
+        } else {
+            left = mid;
+        }
+    }
+    return left;
+}
+
+double binary_search(double left, double right) {
+    const int iterations = 1000;
+    for (int i = 0; i < iterations; i++) {
+        double mid = (left + right) / 2;
+        if (check(mid)) {
+            right = mid;
+        } else {
+            left = mid;
+        }
+    }
+    return left;
+}
+```
