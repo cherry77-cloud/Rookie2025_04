@@ -1,5 +1,7 @@
 ## 设计哈希集合
 
+```c++
+// 链地址法
 class MyHashSet {
 private:
     vector<list<int>> data;
@@ -43,5 +45,6 @@ public:
         return false;
     }
 };
+```
 
 ---
