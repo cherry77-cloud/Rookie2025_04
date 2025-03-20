@@ -47,7 +47,7 @@ int regionSum(const vector<vector<int>>& prefix, int x1, int y1, int x2, int y2)
 // 构造差分数组, diff[i] 表示把下标 ≥i 的数都加上 diff[i]
 vector<int> buildDiffArray(const vector<int>& arr) {
     int n = arr.size();
-    vector<int> diff(n + 2, 0);
+    vector<int> diff(n + 1, 0);
     diff[0] = arr[0];
     for (int i = 1; i < n; i++) {
         diff[i] = arr[i] - arr[i - 1];
