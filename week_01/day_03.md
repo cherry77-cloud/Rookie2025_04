@@ -40,3 +40,34 @@ int regionSum(const vector<vector<int>>& prefix, int x1, int y1, int x2, int y2)
 ```
 
 ---
+
+## 一维差分
+
+```c++
+// 构造差分数组, diff[i] 表示把下标 ≥i 的数都加上 diff[i]
+vector<int> buildDiffArray(const vector<int>& arr) {
+    int n = arr.size();
+    vector<int> diff(n + 2, 0);
+    diff[0] = arr[0];
+    for (int i = 1; i < n; i++) {
+        diff[i] = arr[i] - arr[i - 1];
+    }
+    return diff;
+}
+
+// 区间更新操作
+void rangeUpdate(vector<int>& diff, int left, int right, int value) {
+    diff[left] += value;
+    diff[right + 1] -= value;
+}
+
+// 还原原数组
+void restoreArray(vector<int>& diff) {
+    for (int i = 1; i < diff.size(); i++) {
+        diff[i] += diff[i - 1];
+    }
+}
+```
+
+---
+
