@@ -2,7 +2,7 @@
 
 ```c++
 // 经典二维DP版本
-int zero_one_knapsack_naive(const vector<int>& volumes, const vector<int>& weights, int capacity) 
+int zero_one_knapsack(const vector<int>& volumes, const vector<int>& weights, int capacity) 
 {
     int n = volumes.size();
     vector<vector<int>> dp(n + 1, vector<int>(capacity + 1, 0));
@@ -20,7 +20,7 @@ int zero_one_knapsack_naive(const vector<int>& volumes, const vector<int>& weigh
 }
 
 // 滚动数组优化版本
-int zero_one_knapsack_optimized1(const vector<int>& volumes, const vector<int>& weights, int capacity) 
+int zero_one_knapsack(const vector<int>& volumes, const vector<int>& weights, int capacity) 
 {
     int n = volumes.size();
     vector<vector<int>> dp(2, vector<int>(capacity + 1, 0));
@@ -40,7 +40,7 @@ int zero_one_knapsack_optimized1(const vector<int>& volumes, const vector<int>& 
 }
 
 // 一维数组优化版本
-int zero_one_knapsack_optimized2(const vector<int>& volumes, const vector<int>& weights, int capacity) 
+int zero_one_knapsack(const vector<int>& volumes, const vector<int>& weights, int capacity) 
 {
     vector<int> dp(capacity + 1, 0);
     
@@ -59,7 +59,7 @@ int zero_one_knapsack_optimized2(const vector<int>& volumes, const vector<int>& 
 
 ```c++
 // 二维DP版本（基础实现）
-int complete_knapsack_naive(const vector<int>& volumes, const vector<int>& weights, int capacity) 
+int complete_knapsack(const vector<int>& volumes, const vector<int>& weights, int capacity) 
 {
     int n = volumes.size();
     vector<vector<int>> dp(n + 1, vector<int>(capacity + 1, 0));
@@ -97,7 +97,7 @@ int complete_knapsack(const vector<int>& volumes, const vector<int>& weights, in
 
 ```c++
 // 朴素三维DP版本 (O(N*C*K))
-int multiple_knapsack_naive(const vector<int>& volumes, const vector<int>& weights, const vector<int>& counts, int capacity)
+int multiple_knapsack(const vector<int>& volumes, const vector<int>& weights, const vector<int>& counts, int capacity)
 {
     int n = volumes.size();
     vector<vector<int>> dp(n + 1, vector<int>(capacity + 1, 0));
@@ -115,7 +115,7 @@ int multiple_knapsack_naive(const vector<int>& volumes, const vector<int>& weigh
 }
 
 // 二进制优化版本 (O(N*C*logK))
-int multiple_knapsack_optimized1(const vector<int>& volumes, const vector<int>& weights, const vector<int>& counts, int capacity)
+int multiple_knapsack(const vector<int>& volumes, const vector<int>& weights, const vector<int>& counts, int capacity)
 {
     vector<pair<int, int>> items; // {体积, 价值}
 
@@ -142,7 +142,7 @@ int multiple_knapsack_optimized1(const vector<int>& volumes, const vector<int>& 
 }
 
 // 单调队列优化版本 (O(N*C))
-int multiple_knapsack_optimized2(const vector<int>& volumes, const vector<int>& weights, const vector<int>& counts, int capacity)
+int multiple_knapsack(const vector<int>& volumes, const vector<int>& weights, const vector<int>& counts, int capacity)
 {
     vector<int> dp(capacity + 1, 0);
 
