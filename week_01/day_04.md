@@ -82,3 +82,44 @@ public:
     }
 };
 ```
+
+## 字符串哈希
+
+```c++
+class StringHash {
+private:
+    using ULL = unsigned long long;
+    string s;
+    const ULL BASE = 13331;
+    vector<ULL> prefix_hash;  // 存储字符串 s 的前缀哈希值，prefix_hash[i] 表示 s[0..i-1] 的哈希值
+    vector<ULL> power;
+
+    void precompute() {
+        int n = s.size();
+        prefix_hash.resize(n + 1);
+        power.resize(n + 1);
+        prefix_hash[0] = 0;
+        power[0] = 1;
+        for (int i = 1; i <= n; ++i) {
+            power[i] = power[i - 1] * BASE;
+            prefix_hash[i] = prefix_hash[i - 1] * BASE + s[i - 1]; // 自然溢出
+        }
+    }
+
+public:
+    StringHash(const string& str) : s(str) {
+        precompute();
+    }
+
+    ULL getHash(int l, int r) {
+        int len = r - l + 1;
+        return prefix_hash[r + 1] - prefix_hash[l] * power[len];
+    }
+
+    bool compare(int l1, int r1, int l2, int r2) {
+        if (r1 - l1 != r2 - l2) return false;
+        return getHash(l1, r1) == getHash(l2, r2);
+    }
+};
+```
+---
