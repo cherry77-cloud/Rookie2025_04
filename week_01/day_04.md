@@ -7,7 +7,9 @@ private:
     vector<list<int>> data;
     static const int base = 131;
     static int hash(int key) {
-        return key % base;
+        int h = key % base;
+        if (h < 0) h += base;
+        return h;
     }
 
 public:
