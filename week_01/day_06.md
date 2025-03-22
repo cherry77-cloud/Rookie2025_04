@@ -1,6 +1,6 @@
 ## 最长上升子序列
 
-```
+```c++
 // 记忆化搜索
 int lengthOfLIS(vector<int>& nums)
 {
@@ -96,3 +96,6 @@ pair<int, vector<int>> lengthAndLIS(vector<int>& nums)
     return {g.size(), lis};
 }
 ```
+
+---
+
