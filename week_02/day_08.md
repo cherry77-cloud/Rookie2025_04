@@ -39,6 +39,7 @@ vector<int> leftFirstSmaller2(const vector<int>& nums) {
         }
         st.push(i);
     }
+
     return res;
 }
 ```
