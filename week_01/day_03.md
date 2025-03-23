@@ -158,6 +158,17 @@ int find_last_red(int left, int right) {
 ---
 
 ## 浮点数二分
+- **搜索范围**：在实数范围内定义一个区间 `[left, right]`，确保目标值位于该区间内。
+
+- **中点判断**：
+  - 计算中点 `mid = (left + right) / 2`。
+  - 根据中点是否满足条件，缩小搜索范围：
+  - 如果 `check(mid)` 为真，则目标值在左半部分，更新 `right = mid`。
+  - 如果 `check(mid)` 为假，则目标值在右半部分，更新 `left = mid`。
+
+- **终止条件**：
+  - 精度控制：当区间长度小于某个极小值 `eps` 时，停止搜索。
+  - 迭代次数：通过固定次数的迭代，确保结果达到所需精度。
 
 ```c++
 double binary_search(double left, double right) {
