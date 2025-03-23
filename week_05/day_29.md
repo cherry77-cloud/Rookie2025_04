@@ -235,6 +235,8 @@ int multiple_knapsack(const vector<int>& volumes, const vector<int>& weights, co
 }
 ```
 
+---
+
 ## 四. 二维费用的背包问题
 
 ### 问题描述
