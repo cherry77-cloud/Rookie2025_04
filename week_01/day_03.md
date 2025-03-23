@@ -21,6 +21,9 @@ int rangeSum(const vector<int>& prefix, int l, int r) {
 ---
 
 ## 二维前缀和
+- 二维前缀和是前缀和在二维数组上的扩展。
+- 定义前缀和数组 `prefix`，其中 `prefix[i][j]` 表示原数组 `matrix` 中从 `(0, 0)` 到 `(i, j)` 的子矩阵的和。
+- 通过前缀和数组，任意子矩阵 `(x1, y1)` 到 `(x2, y2)` 的和可以通过 `prefix[x2 + 1][y2 + 1] - prefix[x1][y2 + 1] - prefix[x2 + 1][y1] + prefix[x1][y1]` 快速计算。
 ```c++
 vector<vector<int>> computePrefixSum(const vector<vector<int>>& matrix) {
     int rows = matrix.size();
