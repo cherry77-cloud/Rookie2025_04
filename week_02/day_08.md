@@ -182,3 +182,54 @@ public:
 ```
 
 ---
+
+## 四. 最小栈
+最小栈是一种支持快速获取栈中最小元素的数据结构。通过使用两个栈（一个存储数据，另一个存储最小值），可以在 `O(1)` 时间复杂度内实现 `push`、`pop`、`top` 和 `getMin` 操作。
+
+### 双栈结构：
+- 数据栈（`x_stack`）：存储所有入栈的元素。
+- 最小值栈（`min_stack`）：存储当前栈中的最小值。
+
+### 同步操作：
+- 每次 `push` 操作时，将元素压入数据栈，同时将当前最小值压入最小值栈。
+- 每次 `pop` 操作时，同时弹出数据栈和最小值栈的栈顶元素。
+- `top` 操作返回数据栈的栈顶元素。
+- `getMin` 操作返回最小值栈的栈顶元素。
+
+### 初始化：
+- 最小值栈初始化为 `INT_MAX`，确保第一个元素入栈时能够正确更新最小值。
+
+---
+
+```c++
+class MinStack {
+private:
+    stack<int> x_stack;
+    stack<int> min_stack;
+
+public:
+    MinStack() {
+        min_stack.push(INT_MAX);
+    }
+    
+    void push(int val) {
+        x_stack.push(val);
+        min_stack.push(min(val, min_stack.top()));
+    }
+    
+    void pop() {
+        x_stack.pop();
+        min_stack.pop();
+    }
+    
+    int top() {
+        return x_stack.top();
+    }
+    
+    int getMin() {
+        return min_stack.top();
+    }
+};
+```
+
+---
