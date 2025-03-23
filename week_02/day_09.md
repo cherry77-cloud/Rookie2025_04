@@ -39,6 +39,48 @@ vector<int> kmp(const string& query, const string& pattern) {
 
 ---
 
+```cpp
+vector<int> kmpMatch(const string& query, const string& pattern) {
+    int n = query.size(), m = pattern.size();
+    vector<int> matches;
+
+    vector<int> nextval(m, -1);
+    int j = -1;
+
+    for (int i = 1; i < m; ++i) {
+        while (j != -1 && pattern[j + 1] != pattern[i]) {
+            j = nextval[j];
+        }
+        if (pattern[j + 1] == pattern[i]) {
+            j++;
+        }
+        nextval[i] = j;
+
+        if (nextval[i] != -1 && pattern[nextval[i] + 1] == pattern[i + 1]) {
+            nextval[i] = nextval[nextval[i]];
+        }
+    }
+
+    // 2. 使用 nextval 数组进行匹配
+    j = -1;
+    for (int i = 0; i < n; ++i) {
+        while (j != -1 && pattern[j + 1] != query[i]) {
+            j = nextval[j];
+        }
+        if (pattern[j + 1] == query[i]) {
+            j++;
+        }
+        if (j == m - 1) {
+            matches.push_back(i - m + 1);
+            j = nextval[j]; // 继续匹配下一个
+        }
+    }
+
+    return matches;
+}
+```
+---
+
 ## 二. 字符串哈希
 
 字符串哈希是一种将字符串映射为唯一整数值的技术，常用于快速比较字符串的子串是否相等。通过预处理字符串的前缀哈希值，可以在 `O(1)` 时间复杂度内计算任意子串的哈希值。
