@@ -2,8 +2,7 @@
 
 ```c++
 // 记忆化搜索
-int lengthOfLIS(vector<int>& nums)
-{
+int lengthOfLIS(vector<int>& nums) {
     int n = nums.size();
     vector<int> memo(n);
     auto dfs = [&](this auto&& dfs, int i) -> int {
@@ -24,8 +23,7 @@ int lengthOfLIS(vector<int>& nums)
 }
 
 // 递推
-int lengthOfLIS(vector<int>& nums)
-{
+int lengthOfLIS(vector<int>& nums) {
     int n = nums.size();
     vector<int> f(n);
     for (int i = 0; i < n; i++) {
@@ -41,8 +39,7 @@ int lengthOfLIS(vector<int>& nums)
 }
 
 // 贪心 + 二分查找
-int lengthOfLIS(vector<int>& nums) 
-{
+int lengthOfLIS(vector<int>& nums) {
     vector<int> g;  // 定义 g[i] 表示长为 i+1 的上升子序列的末尾元素的最小值。
     for (int x : nums) {
         auto it = ranges::lower_bound(g, x);
@@ -56,8 +53,7 @@ int lengthOfLIS(vector<int>& nums)
 }
 
 // 返回最长上升子序列的长度和序列本身
-pair<int, vector<int>> lengthAndLIS(vector<int>& nums)
-{
+pair<int, vector<int>> lengthAndLIS(vector<int>& nums) {
     vector<int> g;  // g[i] 表示长为 i+1 的上升子序列的末尾元素的最小值
     vector<int> parent(nums.size(), -1);  // 记录每个元素的前驱节点
     vector<int> index;  // 记录 g 中每个元素在 nums 中的索引
