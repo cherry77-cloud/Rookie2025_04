@@ -1,4 +1,4 @@
-## 高精度加法
+## 一. 高精度加法
 **高精度加法**是一种用于处理大整数相加的算法，适用于超出标准数据类型范围的整数运算。其核心思想是模拟手工加法的过程，逐位相加并处理进位。压九位是一种优化高精度运算的技术，通过将多位数字压缩存储在一个整数中，减少运算次数和存储空间。
 ```c++
 string addHighPrecision(const string& s1, const string& s2) {
@@ -46,7 +46,7 @@ string addHighPrecision(const string& s1, const string& s2) {
 
 ---
 
-## 高精度减法
+## 二. 高精度减法
 **高精度减法**是一种用于处理大整数相减的算法，适用于超出标准数据类型范围的整数运算。其核心思想是模拟手工减法的过程，逐位相减并处理借位。
 ```c++
 string subtractHighPrecision(const string& s1, const string& s2) {
@@ -110,7 +110,7 @@ string subtractHighPrecision(const string& s1, const string& s2) {
 }
 ```
 
-## 高精度乘法
+## 三. 高精度乘法
 **高精度乘法**是一种用于处理大整数相乘的算法，适用于超出标准数据类型范围的整数运算。其核心思想是模拟手工乘法的过程，逐位相乘并处理进位。
 ```c++
 string multiplyHighPrecision(const string& s1, const string& s2) {
@@ -166,7 +166,7 @@ string multiplyHighPrecision(const string& s1, const string& s2) {
 
 ---
 
-## 高精度除法
+## 四. 高精度除法
 **高精度除法**是一种用于处理大整数相除的算法，适用于超出标准数据类型范围的整数运算。其核心思想是模拟手工除法的过程，逐位计算商并处理余数。
 ```c++
 pair<string, long long> divideHighPrecision(const string& dividend, long long divisor) {
