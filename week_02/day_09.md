@@ -1,8 +1,7 @@
 ## 一. KMP
 
 ```cpp
-vector<int> kmp(const string& query, const string& pattern) 
-{
+vector<int> kmp(const string& query, const string& pattern) {
     int n = query.size();
     int m = pattern.size();
     vector<int> result;
