@@ -25,7 +25,6 @@ public:
         int rootA = find(a);
         int rootB = find(b);
         if (rootA == rootB) return;
-
         if (rk[rootA] > rk[rootB])  fa[rootB] = rootA;
         else {
             fa[rootA] = rootB;
