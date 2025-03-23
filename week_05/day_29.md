@@ -234,3 +234,20 @@ int multiple_knapsack(const vector<int>& volumes, const vector<int>& weights, co
     return dp[capacity];
 }
 ```
+
+## 四. 二维费用的背包问题
+
+```cpp
+int knapsack_2d(const vector<int>& volumes, const vector<int>& masses, const vector<int>& weights) {
+    vector<vector<int>> dp(max_capacity + 1, vector<int>(max_load + 1, 0));
+    for (int i = 0; i < num_items; ++i) {
+        int v = volumes[i], m = masses[i], w = weights[i];
+        for (int j = max_capacity; j >= v; --j) {
+            for (int k = max_load; k >= m; --k) {
+                dp[j][k] = max(dp[j][k], dp[j - v][k - m] + w);
+            }
+        }
+    }
+    return dp[max_capacity][max_load];
+}
+```
