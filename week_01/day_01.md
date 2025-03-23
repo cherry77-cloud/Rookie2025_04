@@ -141,3 +141,25 @@ long long countInversionPairs(vector<int>& nums, int left, int right) {
     return result;
 }
 ```
+
+---
+
+## 离散化
+离散化是一种将大范围的数据映射到小范围的技术，常用于处理稀疏数据或优化空间复杂度
+
+```c++
+// 排序并去重
+sort(all.begin(), all.end());
+all.erase(unique(all.begin(), all.end()), all.end());
+
+// 离散化函数: 找到 x 在 all 中的位置
+int find(const vector<int>& all, int x) {
+    return lower_bound(all.begin(), all.end(), x) - all.begin();
+}
+
+// 映射函数: 将 x 映射为从 0 开始的整数
+int mapping(int x, unordered_map<int, int>& H, int& cnt) {
+    if (H.count(x)) return H[x];  // 如果 x 已经存在，返回映射值
+    return H[x] = cnt++;          // 否则，分配一个新的映射值
+}
+```
