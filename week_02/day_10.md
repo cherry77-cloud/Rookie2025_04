@@ -41,7 +41,7 @@ public:
 
 ---
 
-```
+```cpp
 class UnionFind {
 private:
     vector<int> fa;
