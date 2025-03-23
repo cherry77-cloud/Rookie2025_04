@@ -5,7 +5,6 @@
 int zero_one_knapsack(const vector<int>& volumes, const vector<int>& weights, int capacity) {
     int n = volumes.size();
     vector<vector<int>> dp(n + 1, vector<int>(capacity + 1, 0));
-
     for (int i = 1; i <= n; ++i) {
         for (int j = 0; j <= capacity; ++j) {
             if (j >= volumes[i-1]) {
@@ -22,7 +21,6 @@ int zero_one_knapsack(const vector<int>& volumes, const vector<int>& weights, in
 int zero_one_knapsack(const vector<int>& volumes, const vector<int>& weights, int capacity) {
     int n = volumes.size();
     vector<vector<int>> dp(2, vector<int>(capacity + 1, 0));
-
     for (int i = 1; i <= n; ++i) {
         int curr = i % 2;
         int prev = 1 - curr;
@@ -40,7 +38,6 @@ int zero_one_knapsack(const vector<int>& volumes, const vector<int>& weights, in
 // 一维数组优化版本
 int zero_one_knapsack(const vector<int>& volumes, const vector<int>& weights, int capacity) {
     vector<int> dp(capacity + 1, 0);
-    
     for (int i = 0; i < volumes.size(); ++i) {
         for (int j = capacity; j >= volumes[i]; --j) {
             dp[j] = max(dp[j], dp[j - volumes[i]] + weights[i]);
@@ -59,7 +56,6 @@ int zero_one_knapsack(const vector<int>& volumes, const vector<int>& weights, in
 int complete_knapsack(const vector<int>& volumes, const vector<int>& weights, int capacity) {
     int n = volumes.size();
     vector<vector<int>> dp(n + 1, vector<int>(capacity + 1, 0));
-
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j <= capacity; ++j) {
             dp[i+1][j] = dp[i][j]; // 不选当前物品
@@ -75,7 +71,6 @@ int complete_knapsack(const vector<int>& volumes, const vector<int>& weights, in
 // 一维DP版本（空间优化）
 int complete_knapsack(const vector<int>& volumes, const vector<int>& weights, int capacity) {
     vector<int> dp(capacity + 1, 0);
-    
     for (int i = 0; i < volumes.size(); ++i) {
         // 正向遍历以支持重复选择
         for (int j = volumes[i]; j <= capacity; ++j) {
