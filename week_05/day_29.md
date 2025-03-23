@@ -14,6 +14,17 @@
     
 - 注意：每个物品只能选择一次（要么放入背包，要么不放入），因此称为**0-1 背包**。
 
+### 状态转移方程
+- 设 `dp[i][j]` 表示前 `i` 个物品在容量为 `j` 的背包中能获得的最大价值。
+- 对于每个物品 `i` 和容量 `j`，有两种选择：
+- 不选择第 `i` 个物品：
+  - 最大价值为前 `i-1` 个物品在容量 `j` 下的最大价值，即 `dp[i-1][j]`。
+- 选择第 `i` 个物品：
+  - 需要保证当前容量 `j` 大于等于物品 `i` 的体积 `volumes[i]`。
+  - 最大价值为前 `i-1` 个物品在容量 `j-volumes[i]` 下的最大价值加上物品 `i` 的价值，即 `dp[i-1][j-volumes[i]] + weights[i]`。
+
+---
+
 ```c++
 // 经典二维DP版本
 int zero_one_knapsack(const vector<int>& volumes, const vector<int>& weights, int capacity) {
