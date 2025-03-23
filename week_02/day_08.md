@@ -10,6 +10,44 @@
 - **淘汰栈中不符合条件的元素**，栈中存储的是「候选边界」。
 
 ---
+```cpp
+// 每个数左边第一个比它小的数，正向遍历，栈顶元素大于等于当前数组元素，淘汰
+vector<int> leftFirstSmaller1(const vector<int>& nums) {
+    int n = nums.size();
+    vector<int> res(n, -1);
+    stack<int> st;
+
+    for (int i = 0; i < n; ++i) {
+        while (!st.empty() && nums[st.top()] >= nums[i]) {
+            st.pop();
+        }
+        if (!st.empty()) {
+            res[i] = nums[st.top()];
+        }
+        st.push(i);
+    }
+
+    return res;
+}
+
+// 每个数左边第一个比它小的数，反向遍历，栈顶元素大于当前数组元素，直接给栈顶元素记录答案
+vector<int> leftFirstSmaller2(const vector<int>& nums) {
+    int n = nums.size();
+    vector<int> res(n, -1);
+    stack<int> st;
+
+    for (int i = n - 1; i >= 0; --i) {
+        while (!st.empty() && nums[st.top()] > nums[i]) {
+            res[st.top()] = nums[i];
+            st.pop();
+        }
+        st.push(i);
+    }
+    return res;
+}
+```
+
+---
 
 ```cpp
 int largestRectangleArea(vector<int>& heights) {
