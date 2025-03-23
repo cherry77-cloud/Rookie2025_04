@@ -19,9 +19,9 @@ int lengthOfLIS(vector<int>& nums) {
 
 // 贪心 + 二分查找，返回最长上升子序列的长度和序列本身
 pair<int, vector<int>> lengthAndLIS(vector<int>& nums) {
-    vector<int> g;                         // g[i] 表示长为 i+1 的上升子序列的末尾元素的最小值
-    vector<int> parent(nums.size(), -1);   // 记录每个元素的前驱节点
-    vector<int> index;                     // 记录 g 中每个元素在 nums 中的索引
+    vector<int> g; 
+    vector<int> parent(nums.size(), -1);
+    vector<int> index;
 
     for (int i = 0; i < nums.size(); ++i) {
         int x = nums[i];
@@ -39,12 +39,12 @@ pair<int, vector<int>> lengthAndLIS(vector<int>& nums) {
 
     vector<int> lis;
     if (!g.empty()) {
-        int cur = index.back();           // 从最长子序列的最后一个元素开始回溯
+        int cur = index.back();
         while (cur != -1) {
             lis.push_back(nums[cur]);
             cur = parent[cur];
         }
-        reverse(lis.begin(), lis.end());  // 反转得到正确的顺序
+        reverse(lis.begin(), lis.end());
     }
     return {g.size(), lis};
 }
