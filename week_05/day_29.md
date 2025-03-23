@@ -134,7 +134,7 @@ int complete_knapsack(const vector<int>& volumes, const vector<int>& weights, in
 
 ---
 
-## 多重背包
+## 三. 多重背包
 
 ### 问题描述
 - 多重背包问题是 `0-1` 背包和完全背包的扩展，其核心区别在于，每个物品有选择次数上限。具体描述如下：
