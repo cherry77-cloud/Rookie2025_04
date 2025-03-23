@@ -23,7 +23,9 @@
   
   - 需要保证当前容量 `j` 大于等于物品 `i` 的体积 `volumes[i]`。
   - 最大价值为前 `i-1` 个物品在容量 `j-volumes[i]` 下的最大价值加上物品 `i` 的价值，即 `dp[i-1][j-volumes[i]] + weights[i]`。
-
+  ```cpp
+  dp[i][j] = max(dp[i-1][j], dp[i-1][j-volumes[i]] + weights[i])
+  ```
 ---
 
 ```c++
