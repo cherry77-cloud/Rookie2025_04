@@ -237,6 +237,19 @@ int multiple_knapsack(const vector<int>& volumes, const vector<int>& weights, co
 
 ## 四. 二维费用的背包问题
 
+### 问题描述
+二维费用背包问题是经典 `0-1` 背包问题的扩展。在经典 `0-1` 背包问题中，我们只需要考虑背包的容量限制，而在二维费用背包问题中，我们需要同时考虑两种限制条件：背包容积和背包承重。
+
+- 物品数量：`num_items`，表示物品的总数。背包容积：`max_capacity`，表示背包的最大容积。背包承重：`max_load`，表示背包的最大承重。
+- 物品属性：
+  
+ - `volumes`：物品的体积数组，`volumes[i]` 表示第 `i` 个物品的体积。
+ - `masses`：物品的重量数组，`masses[i]` 表示第 `i` 个物品的重量。
+ - `weights`：物品的价值数组，`weights[i]` 表示第 `i` 个物品的价值。
+- 返回一个整数，表示在满足背包容积和承重限制的条件下，能够装入背包的物品的最大总价值。
+
+---
+
 ```cpp
 int knapsack_2d(const vector<int>& volumes, const vector<int>& masses, const vector<int>& weights) {
     vector<vector<int>> dp(max_capacity + 1, vector<int>(max_load + 1, 0));
