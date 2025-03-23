@@ -6,3 +6,5 @@
 
 ---
 
+## `week_02`
+- [栈 队列 散列表](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_02/day_08.md) ✅
