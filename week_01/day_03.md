@@ -47,7 +47,7 @@ int regionSum(const vector<vector<int>>& prefix, int x1, int y1, int x2, int y2)
 
 ---
 
-## 三. 一维差分差分是一种用于快速处理区间更新的技术。
+## 三. 一维差分
 - 差分是一种用于快速处理区间更新的技术。
 - 定义差分数组 `diff`，其中 `diff[i] = arr[i] - arr[i-1]`。
 - 通过对差分数组进行区间更新，可以快速更新原数组的区间值。
