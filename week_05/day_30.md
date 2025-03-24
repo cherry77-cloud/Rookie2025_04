@@ -76,6 +76,7 @@ pair<int, vector<int>> lengthAndLIS(vector<int>& nums) {
 
 ### 状态转移方程
 - 设 `dp[i][j]` 表示 `text1` 的前 `i` 个字符和 `text2` 的前 `j` 个字符的最长公共子序列的长度。
+
 $$
 dp[i][j] = 
 \begin{cases} 
