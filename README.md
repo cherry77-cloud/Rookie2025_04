@@ -10,13 +10,13 @@
 
 ## `week_02`
 
-- [栈 队列 散列表](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_02/day_08.md) 🏗️
-- [KMP 字符串哈希 字典树](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_02/day_09.md) 🏗️
-- [并查集 二叉堆](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_02/day_10.md) 🏗️
+- [【栈】【队列】【散列表】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_02/day_08.md) 🏗️
+- [【KMP】【字符串哈希】【字典树】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_02/day_09.md) 🏗️
+- [【并查集】【二叉堆】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_02/day_10.md) 🏗️
 
 ---
 
 ## `week_05`
 
 - [背包问题](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_05/day_29.md) 🎯
-- [LIS LCS 编辑距离](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_05/day_30.md) 🎯
+- [【LIS】 【LCS】 【编辑距离】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_05/day_30.md) 🎯
