@@ -70,6 +70,21 @@ pair<int, vector<int>> lengthAndLIS(vector<int>& nums) {
 
 ## 二. 最长公共子序列
 
+### 问题描述
+
+给定两个字符串 `text1` 和 `text2`，找出它们的最长公共子序列`LCS`的长度。公共子序列是指在两个字符串中都出现的字符序列，这些字符不需要连续，但必须保持原有的相对顺序。
+
+### 状态转移方程
+- 设 `dp[i][j]` 表示 `text1` 的前 `i` 个字符和 `text2` 的前 `j` 个字符的最长公共子序列的长度。
+
+\begin{align*}
+dp[i][j] = 
+\begin{cases} 
+dp[i-1][j-1]+1, & \text{if } text_1[i-1]=text_2[j-1] \\
+\max(dp[i-1][j], dp[i][j-1]), & \text{if } text_1[i-1]\neq text_2[j-1]
+\end{cases}
+\end{align*}
+
 ```cpp
 int longestCommonSubsequence(string text1, string text2) {
     int n = text1.length(), m = text2.length();
