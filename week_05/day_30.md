@@ -76,7 +76,6 @@ pair<int, vector<int>> lengthAndLIS(vector<int>& nums) {
 
 ### 状态转移方程
 - 设 `dp[i][j]` 表示 `text1` 的前 `i` 个字符和 `text2` 的前 `j` 个字符的最长公共子序列的长度。
-
 $$
 dp[i][j] = 
 \begin{cases} 
@@ -84,6 +83,8 @@ dp[i-1][j-1]+1, & \text{if } text_1[i-1]=text_2[j-1] \\
 \max(dp[i-1][j], dp[i][j-1]), & \text{if } text_1[i-1]\neq text_2[j-1]
 \end{cases}
 $$
+
+---
 
 ```cpp
 int longestCommonSubsequence(string text1, string text2) {
