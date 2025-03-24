@@ -19,4 +19,4 @@
 ## `week_05`
 
 - [背包问题](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_05/day_29.md) 🎯
-- [【LIS】 【LCS】 【编辑距离】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_05/day_30.md) 🎯
+- [【LIS】【LCS】【编辑距离】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_05/day_30.md) 🎯
