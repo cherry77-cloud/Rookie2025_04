@@ -1,4 +1,4 @@
-## 最长上升子序列
+## 一. 最长上升子序列
 
 ### 问题描述
 - 给定一个整数序列 `nums`，找到其中最长的严格递增子序列的长度。
@@ -65,3 +65,6 @@ pair<int, vector<int>> lengthAndLIS(vector<int>& nums) {
     return {g.size(), lis};
 }
 ```
+
+---
+
