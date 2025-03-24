@@ -18,5 +18,5 @@
 
 ## `week_05`
 
-- [背包问题](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_05/day_29.md) 🎯
+- [【0-1背包】【完全背包】【多重背包】【二维费用背包】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_05/day_29.md) 🎯
 - [【LIS】【LCS】【编辑距离】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_05/day_30.md) 🎯
