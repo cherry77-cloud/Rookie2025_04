@@ -73,6 +73,16 @@ int dijkstra(const vector<vector<pair<int, int>>>& graph) {
 
 ## 二. `Bellman-Ford`算法
 
+`Bellman-Ford`算法是解决单源最短路径问题的另一种经典算法，由`Richard Bellman`和`Lester Ford`提出。与`Dijkstra`算法不同，`Bellman-Ford`可以处理图中存在**负权边**的情况，并且能够检测**负权回路**。
+
+### 核心思想
+- `Bellman-Ford`算法基于动态规划思想，通过松弛操作逐步逼近最短路径。
+- 初始化所有顶点距离为无穷大，源点距离为0。
+- 对图中所有边进行`V-1`轮松弛操作（`V`为顶点数）。
+- 如果在`V-1`轮后还能继续松弛，说明图中存在负权回路。
+
+---
+
 ```cpp
 // 边集数组存图
 int bellmanFord(const vector<Edge>& edges, int n) {
