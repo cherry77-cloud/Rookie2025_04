@@ -102,3 +102,38 @@ int BellmanFord(const vector<Edge>& edges, int n, int k) {
 ```
 
 ---
+
+## 三. `SPFA`算法
+
+```cpp
+int SPFA(const vector<vector<pair<int, int>>>& graph) {
+    int n = graph.size();
+    vector<int> dist(n, INF);
+    vector<bool> in_queue(n, false);
+    queue<int> q;
+
+    dist[0] = 0;
+    q.push(0);
+    in_queue[0] = true;
+
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop();
+        in_queue[u] = false;
+
+        for (const auto& [v, w] : graph[u]) {
+            if (dist[v] > dist[u] + w) {
+                dist[v] = dist[u] + w;
+                if (!in_queue[v]) {
+                    q.push(v);
+                    in_queue[v] = true;
+                }
+            }
+        }
+    }
+
+    return dist.back();
+}
+```
+
+---
