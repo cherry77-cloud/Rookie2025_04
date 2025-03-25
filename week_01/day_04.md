@@ -38,17 +38,17 @@ function<void(int, int)> dfs = [&](int u, int mask) {
 
 ### 递归实现排列型枚举
 ```cpp
-auto dfs = [&](int u, auto&& dfs) -> void {
+function<void(int)> dfs = [&](int u) {
     if (u == n) {
         result.push_back(path);
         return;
     }
     
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; ++i) {
         if (!visited[i]) {
             visited[i] = true;
             path.push_back(i + 1);
-            dfs(u + 1, dfs);
+            dfs(u + 1);
             path.pop_back();
             visited[i] = false;
         }
@@ -56,7 +56,7 @@ auto dfs = [&](int u, auto&& dfs) -> void {
 };
 
 
-auto dfs = [&](int u, int mask, auto&& dfs) -> void {
+function<void(int, int)> dfs = [&](int u, int mask) -> void {
     if (u == n) {
         result.push_back(path);
         return;
@@ -65,7 +65,7 @@ auto dfs = [&](int u, int mask, auto&& dfs) -> void {
     for (int i = 0; i < n; i++) {
         if (!(mask & (1 << i))) {
             path.push_back(i + 1);
-            dfs(u + 1, mask | (1 << i), dfs);
+            dfs(u + 1, mask | (1 << i));
             path.pop_back();
         }
     }
@@ -109,3 +109,5 @@ function<void(int, int, int)> dfs = [&](int u, int cnt, int mask) {
     dfs(u + 1, cnt, mask);
 };
 ```
+
+---
