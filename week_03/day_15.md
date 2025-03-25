@@ -27,14 +27,9 @@ int dijkstra(const vector<vector<int>>& g, int n) {
     
     return dist[n] == INF ? -1 : dist[n];
 }
-```
-
----
 
 
-## 二. `Dijkstra`单源最短路(堆优化)
-
-```cpp
+// 堆优化
 int dijkstra(const vector<vector<pair<int, int>>>& graph) {
     int n = graph.size() - 1;
     vector<int> dist(n + 1, INF);
@@ -61,4 +56,3 @@ int dijkstra(const vector<vector<pair<int, int>>>& graph) {
 ```
 
 ---
-
