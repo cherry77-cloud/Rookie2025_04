@@ -80,7 +80,7 @@ int bellmanFord(const vector<Edge>& edges, int n) {
     return dist.back();
 }
 
-// 有边数限制的最短路
+// 有边数限制的最短路，最多经过 k 条边的最短路径
 int BellmanFord(const vector<Edge>& edges, int n, int k) {
     vector<int> dist(n, INF);
     dist[0] = 0;
