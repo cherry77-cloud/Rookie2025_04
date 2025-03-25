@@ -16,6 +16,11 @@
 
 ---
 
+## `week_03`
+
+- [【dijkstra】【Bellman-Ford】【SPFA】【Floyd-Warshall】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_03/day_15.md) 🏗️
+
+---
 ## `week_05`
 
 - [【0-1背包】【完全背包】【多重背包】【二维费用背包】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_05/day_29.md) 🎯
