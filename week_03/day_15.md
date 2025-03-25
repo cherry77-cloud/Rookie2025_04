@@ -1,6 +1,7 @@
 ## 一. `Dijkstra`算法
 
 ```cpp
+// 邻接矩阵存图
 int dijkstra(const vector<vector<int>>& g) {
     int n = g.size();
     vector<int> dist(n, INF);
@@ -31,7 +32,7 @@ int dijkstra(const vector<vector<int>>& g) {
 }
 
 
-// 堆优化
+// 邻接表存图 + 堆优化
 int dijkstra(const vector<vector<pair<int, int>>>& graph) {
     int n = graph.size();
     vector<int> dist(n, INF);
@@ -63,6 +64,7 @@ int dijkstra(const vector<vector<pair<int, int>>>& graph) {
 ## 二. `Bellman-Ford`算法
 
 ```cpp
+// 边集数组存图
 int bellmanFord(const vector<Edge>& edges, int n) {
     vector<int> dist(n, INF);
     dist[0] = 0;
