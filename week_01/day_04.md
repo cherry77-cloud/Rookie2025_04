@@ -35,3 +35,23 @@ auto dfs = [&](int u, int mask, auto&& dfs) -> void {
 
 ---
 
+### 递归实现排列型枚举
+```cpp
+auto dfs = [&](int u, auto&& dfs) -> void {
+    if (u == n) {
+        result.push_back(path);
+        return;
+    }
+    
+    for (int i = 1; i <= n; i++) {
+        if (!visited[i]) {
+            visited[i] = true;
+            path.push_back(i);
+            dfs(u + 1, dfs);
+            path.pop_back();
+            visited[i] = false;
+        }
+    }
+};
+
+```
