@@ -168,6 +168,15 @@ int SPFA(const vector<vector<pair<int, int>>>& graph) {
 ---
 
 ## 四. `Floyd-Warshall`算法
+`Floyd-Warshall`算法是一种解决所有顶点对最短路径问题的动态规划算法，由`Robert Floyd`和`Stephen Warshall`分别独立提出。它可以计算图中所有顶点之间的最短路径，并能处理负权边（但不能处理负权回路）。
+
+### 核心思想
+- `Floyd-Warshall`算法的核心思想是动态规划和逐步松弛。
+- 使用三维动态规划思想，但通过巧妙地设计降为二维空间实现。
+- 逐步考虑每个顶点作为中间节点的情况。
+- 通过三重循环更新所有顶点对之间的最短距离。
+
+---
 
 ```cpp
 vector<vector<int>> dist(n, vector<int>(n, INF));
