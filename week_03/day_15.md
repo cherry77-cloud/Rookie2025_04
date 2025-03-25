@@ -58,3 +58,27 @@ int dijkstra(const vector<vector<pair<int, int>>>& graph) {
 ```
 
 ---
+
+## 二. `Bellman-Ford`算法(有边数限制的最短路)
+
+```cpp
+int BellmanFord(const vector<vector<pair<int, int>>>& g, int k) {
+    int n = g.size();
+    vector<int> dist(n, INF);
+    dist[0] = 0;
+    for (int i = 0; i < k; i++) {
+        vector<int> backup = dist;
+        for (int u = 0; u < n; ++u) {
+            for (const auto& [v, w] : g[u]) {
+                if (dist[v] > backup[u] + w) {
+                    dist[v] = backup[u] + w;
+                }
+            }
+        }
+    }
+    return dist.back();
+}
+```
+
+---
+
