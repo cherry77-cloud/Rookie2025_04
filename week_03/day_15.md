@@ -7,7 +7,7 @@ int dijkstra(const vector<vector<int>>& g, int n) {
     
     dist[1] = 0;
     
-    for (int i = 1; i < n; ++i) {
+    for (int i = 1; i < n; ++i) {  // 节点编号从1开始
         int u = 0;
         for (int j = 1; j <= n; ++j) {
             if (!visited[j] && (u == 0 || dist[j] < dist[u])) {
