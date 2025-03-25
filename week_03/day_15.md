@@ -27,7 +27,7 @@ int dijkstra(const vector<vector<int>>& g) {
         }
     }
     
-    return dist[n-1] == INF ? -1 : dist[n-1];
+    return dist.back();
 }
 
 
@@ -53,7 +53,7 @@ int dijkstra(const vector<vector<pair<int, int>>>& graph) {
         }
     }
 
-    return dist[n-1] == INF ? -1 : dist[n-1];
+    return dist.back();
 }
 ```
 
