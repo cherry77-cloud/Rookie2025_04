@@ -19,7 +19,7 @@ int dijkstra(const vector<vector<int>>& g) {
         if (u == -1) break;
         visited[u] = true;
         
-        // // 松弛操作
+        // 松弛操作
         for (int v = 0; v < n; ++v) {
             if (dist[u] + g[u][v] < dist[v]) {
                 dist[v] = dist[u] + g[u][v];
@@ -45,6 +45,7 @@ int dijkstra(const vector<vector<pair<int, int>>>& graph) {
         pq.pop();
         if (d > dist[u]) continue;
 
+        // 松弛操作
         for (auto [v, w] : graph[u]) {
             if (dist[v] > dist[u] + w) {
                 dist[v] = dist[u] + w;
@@ -59,26 +60,43 @@ int dijkstra(const vector<vector<pair<int, int>>>& graph) {
 
 ---
 
-## 二. `Bellman-Ford`算法(有边数限制的最短路)
+## 二. `Bellman-Ford`算法
 
 ```cpp
-int BellmanFord(const vector<vector<pair<int, int>>>& g, int k) {
-    int n = g.size();
+int bellmanFord(const vector<Edge>& edges, int n) {
     vector<int> dist(n, INF);
     dist[0] = 0;
-    for (int i = 0; i < k; i++) {
-        vector<int> backup = dist;
-        for (int u = 0; u < n; ++u) {
-            for (const auto& [v, w] : g[u]) {
-                if (dist[v] > backup[u] + w) {
-                    dist[v] = backup[u] + w;
-                }
+    // 松弛 n-1 轮
+    for (int k = 0; k < n - 1; ++k) {
+        bool updated = false;
+        for (const auto& e : edges) {
+            if (dist[e.from] != INF && dist[e.to] > dist[e.from] + e.weight) {
+                dist[e.to] = dist[e.from] + e.weight;
+                updated = true;
             }
         }
+        if (!updated) break;
+    }
+    return dist.back();
+}
+
+// 有边数限制的最短路
+int BellmanFord(const vector<Edge>& edges, int n, int k) {
+    vector<int> dist(n, INF);
+    dist[0] = 0;
+    for (int i = 0; i < k; ++i) {
+        vector<int> backup = dist;  // 防止串联更新
+        bool updated = false;
+        for (const auto& e : edges) {
+            if (backup[e.from] != INF && dist[e.to] > backup[e.from] + e.weight) {
+                dist[e.to] = backup[e.from] + e.weight;
+                updated = true;
+            }
+        }
+        if (!updated) break;
     }
     return dist.back();
 }
 ```
 
 ---
-
