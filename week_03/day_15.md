@@ -1,42 +1,44 @@
 ## 一. `Dijkstra`单源最短路
 
 ```cpp
-int dijkstra(const vector<vector<int>>& g, int n) {
-    vector<int> dist(n + 1, INF);
-    vector<bool> visited(n + 1, false);
+int dijkstra(const vector<vector<int>>& g) {
+    int n = g.size();
+    vector<int> dist(n, INF);
+    vector<bool> visited(n, false);
     
-    dist[1] = 0;
+    dist[0] = 0;
     
-    for (int i = 1; i < n; ++i) {  // 节点编号从1开始
-        int u = 0;
-        for (int j = 1; j <= n; ++j) {
-            if (!visited[j] && (u == 0 || dist[j] < dist[u])) {
+    for (int i = 0; i < n - 1; ++i) {
+        int u = -1;
+        for (int j = 0; j < n; ++j) {
+            if (!visited[j] && (u == -1 || dist[j] < dist[u])) {
                 u = j;
             }
         }
         
-        if (u == 0) break;
+        if (u == -1) break;
         visited[u] = true;
         
-        for (int v = 1; v <= n; ++v) {
+        // // 松弛操作
+        for (int v = 0; v < n; ++v) {
             if (dist[u] + g[u][v] < dist[v]) {
                 dist[v] = dist[u] + g[u][v];
             }
         }
     }
     
-    return dist[n] == INF ? -1 : dist[n];
+    return dist[n-1] == INF ? -1 : dist[n-1];
 }
 
 
 // 堆优化
 int dijkstra(const vector<vector<pair<int, int>>>& graph) {
-    int n = graph.size() - 1;
-    vector<int> dist(n + 1, INF);
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;  // {最短距离，节点编号}
+    int n = graph.size();
+    vector<int> dist(n, INF);
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
 
-    dist[1] = 0;
-    pq.emplace(0, 1);
+    dist[0] = 0;
+    pq.emplace(0, 0);
 
     while (!pq.empty()) {
         auto [d, u] = pq.top();
@@ -51,7 +53,7 @@ int dijkstra(const vector<vector<pair<int, int>>>& graph) {
         }
     }
 
-    return dist[n] == INF ? -1 : dist[n];
+    return dist[n-1] == INF ? -1 : dist[n-1];
 }
 ```
 
