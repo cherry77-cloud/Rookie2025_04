@@ -38,7 +38,7 @@ int dijkstra(const vector<vector<int>>& g, int n) {
 int dijkstra(const vector<vector<pair<int, int>>>& graph) {
     int n = graph.size() - 1;
     vector<int> dist(n + 1, INF);
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;  // {最短距离，节点编号}
 
     dist[1] = 0;
     pq.emplace(0, 1);
