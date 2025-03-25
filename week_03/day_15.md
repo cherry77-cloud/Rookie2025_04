@@ -124,6 +124,15 @@ int BellmanFord(const vector<Edge>& edges, int n, int k) {
 ---
 
 ## 三. `SPFA`算法
+`SPFA（Shortest Path Faster Algorithm）`是`Bellman-Ford`算法的一种优化实现。它通过队列优化减少了不必要的松弛操作，在大多数情况下能获得比`Bellman-Ford`更好的性能。
+
+### 核心思想
+
+- 使用队列维护待松弛的顶点集合
+- 只有那些距离被更新的顶点才会被放入队列
+- 避免了`Bellman-Ford`中对所有边的盲目松弛
+
+---
 
 ```cpp
 int SPFA(const vector<vector<pair<int, int>>>& graph) {
