@@ -18,7 +18,7 @@
 
 ## `week_03`
 
-- [【dijkstra】【Bellman-Ford】【SPFA】【Floyd-Warshall】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_03/day_15.md) 🏗️
+- [【dijkstra】【Bellman-Ford】【SPFA】【Floyd-Warshall】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_03/day_15.md) ⚖️
 
 ---
 ## `week_05`
