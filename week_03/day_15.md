@@ -163,4 +163,40 @@ void floydWarshall(vector<vector<int>>& dist) {
     }
 }
 ```
+
 ---
+
+## 五. 0-1 BFS
+
+```cpp
+class ZeroOneBFS {
+    static constexpr int DIRS[4][2] = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+
+public:
+    static int minimumObstacles(vector<vector<int>>& grid) {
+        int m = grid.size(), n = grid[0].size();
+        vector<vector<int>> dist(m, vector<int>(n, INT_MAX));
+        dist[0][0] = 0;
+        deque<pair<int, int>> q;
+        q.emplace_front(0, 0);
+
+        while (!q.empty()) {
+            auto [i, j] = q.front();
+            q.pop_front();
+
+            for (auto& [dx, dy] : DIRS) {
+                int x = i + dx, y = j + dy;
+                if (x >= 0 && x < m && y >= 0 && y < n) {
+                    int cost = grid[x][y];
+                    if (dist[i][j] + cost < dist[x][y]) { // 松弛操作
+                        dist[x][y] = dist[i][j] + cost;
+                        cost == 0 ? q.emplace_front(x, y) : q.emplace_back(x, y);
+                    }
+                }
+            }
+        }
+
+        return dist[m-1][n-1];
+    }
+};
+```
