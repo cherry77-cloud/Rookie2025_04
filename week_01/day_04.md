@@ -17,6 +17,7 @@ auto dfs = [&](int u, auto&& dfs) -> void {
     path.pop_back();
 };
 
+
 auto dfs = [&](int u, int mask, auto&& dfs) -> void {
     if (u == n) {
         vector<int> path;
@@ -54,4 +55,23 @@ auto dfs = [&](int u, auto&& dfs) -> void {
     }
 };
 
+
+auto dfs = [&](int u, int mask, auto&& dfs) -> void {
+    if (u == n) {
+        result.push_back(path);
+        return;
+    }
+    
+    for (int i = 0; i < n; i++) {
+        if (!(mask & (1 << i))) {
+            path.push_back(i + 1);
+            dfs(u + 1, mask | (1 << i), dfs);
+            path.pop_back();
+        }
+    }
+};
 ```
+
+---
+
+### 递归实现组合型枚举
