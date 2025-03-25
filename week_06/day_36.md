@@ -36,3 +36,24 @@ int interval_group(vector<pair<int, int>>& intervals) {
 ```
 
 ---
+
+## 三. 区间点覆盖问题 + 最大不相交区间问题
+
+```cpp
+int max_disjoint_intervals(vector<pair<int, int>>& intervals) {
+    sort(intervals.begin(), intervals.end(), [](const auto& a, const auto& b) {
+        return a.second < b.second;
+    });
+    int count = 0;
+    int last_end = INT_MIN;
+    for (const auto& interval : intervals) {
+        if (interval.first > last_end) {
+            last_end = interval.second;
+            count++;
+        }
+    }
+    return count;
+}
+```
+
+---
