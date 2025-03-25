@@ -1,5 +1,7 @@
 ## 一. 指数型，排列型，组合型回溯
 
+### 递归实现指数型枚举
+
 ```cpp
 void dfs(int u) {
     if (u == n) {
@@ -15,4 +17,24 @@ void dfs(int u) {
     dfs(u + 1);
     path.pop_back();
 }
+
+
+void dfs(int u, int mask) {
+    if (u == n) {
+        vector<int> path;
+        for (int i = 0; i < n; i++) {
+            if (mask & (1 << i)) {
+                path.push_back(i + 1);
+            }
+        }
+        subset.push_back(path);
+        return;
+    }
+    
+    dfs(u + 1, mask);               // 不选
+    dfs(u + 1, mask | (1 << u));    // 选
+}
 ```
+
+---
+
