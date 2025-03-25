@@ -1,4 +1,4 @@
-## 一. Dijkstra单源最短路
+## 一. `Dijkstra`单源最短路
 
 ```cpp
 int dijkstra(const vector<vector<int>>& g, int n) {
