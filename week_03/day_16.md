@@ -139,3 +139,34 @@ bool isBipartite(const vector<vector<int>>& adj) {
 ```
 
 ---
+
+## 四. 匈牙利算法 - 二分图的最大匹配
+
+```cpp
+int hungarian(const vector<vector<int>>& graph, int n_left, int n_right) {
+    vector<int> right_match(n_right, -1);
+    int result = 0;
+
+    for (int u = 0; u < n_left; ++u) {
+        vector<bool> vis(n_right, false);
+
+        function<bool(int)> dfs = [&](int u) {
+            for (int v : graph[u]) {
+                if (!vis[v]) {
+                    vis[v] = true;
+                    if (right_match[v] == -1 || dfs(right_match[v])) {
+                        right_match[v] = u;
+                        return true;
+                    }
+                }
+            }
+            return false;
+        };
+
+        if (dfs(u)) ++result;
+    }
+    return result;
+}
+```
+
+---
