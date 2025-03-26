@@ -51,6 +51,13 @@ int interval_group(vector<pair<int, int>>& intervals) {
 
 ## 三. 区间点覆盖问题 + 最大不相交区间问题
 
+- **右端点排序**：所有区间按结束位置升序排列
+- **贪心处理**
+  - 点覆盖：每次选当前区间右端点，覆盖后续可能重叠的区间
+  - 不相交区间：直接统计不重叠的区间数量
+
+---
+
 ```cpp
 int max_disjoint_intervals(vector<pair<int, int>>& intervals) {
     sort(intervals.begin(), intervals.end(), [](const auto& a, const auto& b) {
