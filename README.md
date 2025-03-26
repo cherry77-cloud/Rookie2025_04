@@ -21,7 +21,7 @@
 
 ## `week_03`
 
-- [【dijkstra】【Bellman-Ford】【SPFA】【Floyd-Warshall】【0-1 BFS】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_03/day_15.md) ⚖️
+- [【Dijkstra】【Bellman-Ford】【SPFA】【Floyd-Warshall】【0-1 BFS】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_03/day_15.md) ⚖️
 - [【Prim】【Kruskal】【染色法判断二分图】【匈牙利算法】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_03/day_16.md) ⚖️
 
 
