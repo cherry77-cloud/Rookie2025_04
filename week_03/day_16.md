@@ -36,3 +36,45 @@ int prim(const vector<vector<int>>& g) {
 ```
 
 ---
+
+## 二. `Kruskal`算法
+
+```cpp
+struct Edge {
+    int u, v, w;
+    bool operator<(const Edge& other) const {
+        return w < other.w;
+    }
+};
+
+int kruskal(vector<Edge>& edges, int n) {
+    if (n <= 0) return INF;
+    
+    vector<int> parent(n);
+    iota(parent.begin(), parent.end(), 0);
+    
+    auto find = [&](int x) {
+        while (parent[x] != x) {
+            parent[x] = parent[parent[x]];
+            x = parent[x];
+        }
+        return x;
+    };
+
+    sort(edges.begin(), edges.end());
+    int total = 0, cnt = 0;
+
+    for (const auto& [u, v, w] : edges) {
+        int ru = find(u), rv = find(v);
+        if (ru != rv) {
+            parent[ru] = rv;
+            total += w;
+            if (++cnt == n - 1) break;
+        }
+    }
+
+    return cnt == n - 1 ? total : INF;
+}
+```
+
+---
