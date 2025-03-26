@@ -25,7 +25,7 @@ public:
     UnionFind(int n) {
         fa.resize(n + 1);
         rk.resize(n + 1, 1);
-        for (int i = 1; i <= n; ++i) {
+        for (int i = 0; i <= n; ++i) {
             fa[i] = i;
         }
     }
@@ -64,7 +64,7 @@ private:
 public:
     UnionFind(int n) {
         fa.resize(n + 1);
-        for (int i = 1; i <= n; ++i) {
+        for (int i = 0; i <= n; ++i) {
             fa[i] = i;
         }
     }
@@ -98,7 +98,7 @@ public:
 
 ---
 
-## 二. 最小堆
+## 二. 二叉堆
 
 ### 功能概述
 
@@ -110,9 +110,9 @@ public:
 ### 核心方法
 
 - `heapifyUp` 功能：将索引 `p` 处的元素向上调整，直到堆满足最小堆性质。若当前节点值小于父节点值，则交换两者位置。重复上一步，直到到达根节点或父节点值更小。
-
-
 - `heapifyDown` 功能：将索引 `u` 处的元素向下调整，直到堆满足最小堆性质。找到当前节点与其左右子节点中的最小值。若最小值是子节点，则交换两者位置。重复直到当前节点是子树中的最小值。
+
+---
 
 ```cpp
 class MinHeap {
@@ -167,3 +167,81 @@ public:
 ```
 
 ---
+
+### 堆求解 TopK 问题的一般思路
+
+堆结构能高效维护当前最优的K个元素，通过不断淘汰不符合条件的元素来解决问题。关键在于：
+- 选择合适的堆类型（最大堆或最小堆）
+- 维护固定大小的堆（K个元素）
+- 动态更新堆内容
+
+#### 求 `TopK` 小元素
+
+```cpp
+// 维护大小为K的最大堆
+// 遇到比堆顶小的元素时，替换堆顶
+// 最终堆中保留最小的K个数
+
+priority_queue<int> max_heap;
+
+for (int num : nums) {
+    if (max_heap.size() < k) {
+        max_heap.push(num);
+    } else if (num < max_heap.top()) {
+        max_heap.pop();
+        max_heap.push(num);
+    }
+}
+```
+
+#### 求 `TopK` 大元素
+
+```cpp
+// 维护大小为K的最小堆
+// 遇到比堆顶大的元素时，替换堆顶
+// 最终堆中保留最大的K个数
+
+priority_queue<int, vector<int>, greater<int>> min_heap;
+
+for (int num : nums) {
+    if (min_heap.size() < k) {
+        min_heap.push(num);
+    } else if (num > min_heap.top()) {
+        min_heap.pop();
+        min_heap.push(num);
+    }
+}
+```
+
+---
+
+## 三. 对顶堆 + 数据流中的中位数
+
+```cpp
+class MedianFinder {
+private:
+    priority_queue<int> left;  // 大根堆
+    priority_queue<int, vector<int>, greater<int>> right;  // 小根堆
+public:
+    MedianFinder() {}
+    
+    void addNum(int num) {
+        if (left.size() == right.size()) {
+            right.push(num);
+            left.push(right.top());
+            right.pop();
+        } else {
+            left.push(num);
+            right.push(left.top());
+            left.pop();
+        }
+    }
+    
+    double findMedian() {
+        if (left.size() > right.size()) {
+            return left.top();
+        }
+        return (left.top() + right.top()) / 2.0;
+    }
+};
+```
