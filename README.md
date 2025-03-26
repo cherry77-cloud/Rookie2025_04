@@ -8,6 +8,7 @@
 ---
 
 
+
 ## `week_02`
 
 - [【栈】【队列】【散列表】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_02/day_08.md) 🏗️
@@ -16,11 +17,18 @@
 
 ---
 
+
+
 ## `week_03`
 
 - [【dijkstra】【Bellman-Ford】【SPFA】【Floyd-Warshall】【0-1 BFS】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_03/day_15.md) ⚖️
+- [【Prim】【Kruskal】【染色法判断二分图】【匈牙利算法】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_03/day_16.md) ⚖️
+
+
 
 ---
+
+
 ## `week_05`
 
 - [【0-1背包】【完全背包】【多重背包】【二维费用背包】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_05/day_29.md) 🎯
