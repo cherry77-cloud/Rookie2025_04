@@ -25,6 +25,12 @@ vector<vector<int>> merge(vector<vector<int>>& intervals) {
 
 ## 二. 区间分组
 
+**排序预处理**：按区间起始点排序：将所有区间按左端点升序排列，确保处理顺序合理。
+**贪心分配组别**：动态维护组的最早结束时间，使用最小堆记录每组当前的最右端点（即组内最后一个区间的结束时间）。
+- 若当前区间起始点 > 堆顶（最早结束时间）：可合并到该组 → 更新该组的最右端点（弹出旧值，压入当前区间的右端点）。
+- 若当前区间起始点 ≤ 堆顶：必须新建一组 → 直接压入当前区间的右端点。
+---
+
 ```cpp
 int interval_group(vector<pair<int, int>>& intervals) {
     sort(intervals.begin(), intervals.end());
