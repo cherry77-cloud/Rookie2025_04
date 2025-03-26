@@ -98,7 +98,54 @@ public:
 
 ---
 
-## 二. 二叉堆
+## 二. 堆求解 `TopK` 问题的一般思路
+
+堆结构能高效维护当前最优的K个元素，通过不断淘汰不符合条件的元素来解决问题。关键在于：
+- 选择合适的堆类型（最大堆或最小堆）
+- 维护固定大小的堆（K个元素）
+- 动态更新堆内容
+
+### 求 `TopK` 小元素
+
+```cpp
+// 维护大小为K的最大堆
+// 遇到比堆顶小的元素时，替换堆顶
+// 最终堆中保留最小的K个数
+
+priority_queue<int> max_heap;
+
+for (int num : nums) {
+    if (max_heap.size() < k) {
+        max_heap.push(num);
+    } else if (num < max_heap.top()) {
+        max_heap.pop();
+        max_heap.push(num);
+    }
+}
+```
+
+### 求 `TopK` 大元素
+
+```cpp
+// 维护大小为K的最小堆
+// 遇到比堆顶大的元素时，替换堆顶
+// 最终堆中保留最大的K个数
+
+priority_queue<int, vector<int>, greater<int>> min_heap;
+
+for (int num : nums) {
+    if (min_heap.size() < k) {
+        min_heap.push(num);
+    } else if (num > min_heap.top()) {
+        min_heap.pop();
+        min_heap.push(num);
+    }
+}
+```
+
+---
+
+## 三. 二叉堆
 
 ### 功能概述
 
@@ -168,54 +215,7 @@ public:
 
 ---
 
-### 堆求解 TopK 问题的一般思路
-
-堆结构能高效维护当前最优的K个元素，通过不断淘汰不符合条件的元素来解决问题。关键在于：
-- 选择合适的堆类型（最大堆或最小堆）
-- 维护固定大小的堆（K个元素）
-- 动态更新堆内容
-
-#### 求 `TopK` 小元素
-
-```cpp
-// 维护大小为K的最大堆
-// 遇到比堆顶小的元素时，替换堆顶
-// 最终堆中保留最小的K个数
-
-priority_queue<int> max_heap;
-
-for (int num : nums) {
-    if (max_heap.size() < k) {
-        max_heap.push(num);
-    } else if (num < max_heap.top()) {
-        max_heap.pop();
-        max_heap.push(num);
-    }
-}
-```
-
-#### 求 `TopK` 大元素
-
-```cpp
-// 维护大小为K的最小堆
-// 遇到比堆顶大的元素时，替换堆顶
-// 最终堆中保留最大的K个数
-
-priority_queue<int, vector<int>, greater<int>> min_heap;
-
-for (int num : nums) {
-    if (min_heap.size() < k) {
-        min_heap.push(num);
-    } else if (num > min_heap.top()) {
-        min_heap.pop();
-        min_heap.push(num);
-    }
-}
-```
-
----
-
-## 三. 对顶堆 + 数据流中的中位数
+## 四. 对顶堆 + 数据流中的中位数
 
 ```cpp
 class MedianFinder {
