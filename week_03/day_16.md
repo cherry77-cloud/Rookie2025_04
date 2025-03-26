@@ -172,6 +172,18 @@ bool isBipartite(const vector<vector<int>>& adj) {
 
 ## 四. 匈牙利算法 - 二分图的最大匹配
 
+匈牙利算法是求解二分图最大匹配问题的经典算法，其核心是通过**交替路径（Alternating Path**的寻找与增广，逐步扩大匹配集合。算法体现**贪心+回溯**的特性：
+
+**交替路径定义**
+- 由未匹配边和已匹配边交替组成的路径
+- 起点和终点都是未匹配顶点
+
+**增广操作**
+- 找到一条交替路径后，将该路径上的所有边状态取反（匹配↔非匹配）
+- 每次增广操作可使匹配数+1
+
+---
+
 ```cpp
 int hungarian(const vector<vector<int>>& graph, int n_left, int n_right) {
     vector<int> right_match(n_right, -1);
