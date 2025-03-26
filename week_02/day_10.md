@@ -143,7 +143,7 @@ private:
 
 public:
     MinHeap() {
-        heap.push_back(0);
+        heap.push_back(0);  // 添加哨兵节点
         heapSize = 0;
     }
 
