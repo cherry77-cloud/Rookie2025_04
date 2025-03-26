@@ -38,4 +38,4 @@
 
 ## `week_06`
 
-- [【区间调度】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_06/day_36.md) 🎯
+- [【区间调度】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_06/day_36.md) ✨
