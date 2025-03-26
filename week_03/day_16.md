@@ -78,3 +78,64 @@ int kruskal(vector<Edge>& edges, int n) {
 ```
 
 ---
+
+## 三. 染色法判断二分图
+
+```cpp
+bool isBipartite(const vector<vector<int>>& adj) {
+    int n = adj.size();
+    vector<int> color(n, 0);  //  0:未染色, 1:红色, 2:蓝色
+    queue<int> q;
+
+    for (int i = 0; i < n; ++i) {
+        if (color[i] != 0) continue;
+        
+        q.push(i);
+        color[i] = 1;
+        
+        while (!q.empty()) {
+            int u = q.front();
+            q.pop();
+            
+            for (int v : adj[u]) {
+                if (color[v] == 0) {
+                    color[v] = 3 - color[u]; // 交替染色
+                    q.push(v);
+                } 
+                else if (color[v] == color[u]) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
+
+bool isBipartite(const vector<vector<int>>& adj) {
+    int n = adj.size();
+    vector<int> color(n, 0); // 0:未染色, 1:红色, 2:蓝色
+    
+    function<bool(int, int)> dfs = [&](int u, int c) -> bool {
+        color[u] = c;
+        for (int v : adj[u]) {
+            if (color[v] == 0) {
+                if (!dfs(v, 3 - c)) return false;
+            } 
+            else if (color[v] == c) {
+                return false;
+            }
+        }
+        return true;
+    };
+    
+    for (int i = 0; i < n; ++i) {
+        if (color[i] == 0 && !dfs(i, 1)) {
+            return false;
+        }
+    }
+    return true;
+}
+```
+
+---
