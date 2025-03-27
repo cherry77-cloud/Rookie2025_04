@@ -157,3 +157,44 @@ public:
     }
 };
 ```
+
+---
+
+```cpp
+// 0-1背包 - 物品只能选0或1次
+unordered_map<pair<int, int>, int> memo; // 记忆化存储
+function<int(int, int)> dfs = [&](int i, int c) -> int {
+    if (i < 0 || c <= 0) return 0; // 终止条件
+    
+    auto key = make_pair(i, c);
+    if (memo.count(key)) return memo[key]; // 查缓存
+
+    // 不选当前物品
+    int not_take = dfs(i - 1, c);
+    
+    // 选当前物品（前提：容量足够）
+    int take = (c >= w[i]) ? v[i] + dfs(i - 1, c - w[i]) : 0;
+    
+    return memo[key] = max(take, not_take); // 存缓存
+};
+
+
+// 完全背包（物品可选无限次）
+unordered_map<pair<int, int>, int> memo; // 记忆化存储
+function<int(int, int)> dfs = [&](int i, int c) -> int {
+    if (i < 0 || c <= 0) return 0; // 终止条件
+    
+    auto key = make_pair(i, c);
+    if (memo.count(key)) return memo[key]; // 查缓存
+
+    // 不选当前物品
+    int not_take = dfs(i - 1, c);
+    
+    // 选当前物品（可重复选，仍传i而非i-1）
+    int take = (c >= w[i]) ? v[i] + dfs(i, c - w[i]) : 0;
+    
+    return memo[key] = max(take, not_take); // 存缓存
+};
+```
+
+---
