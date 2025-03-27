@@ -116,8 +116,44 @@ function<void(int, int, int)> dfs = [&](int u, int cnt, int mask) {
 ## 二. 记忆化搜索
 - 记忆化搜索是一种优化递归算法的经典技术，其核心思想是将**函数参数作为键，返回值作为值进行缓存**，从而避免重复计算。
 - 记忆化搜索的本质是对计算图的缓存，将函数视为一个**有向无环图(DAG)**
+
   - 节点：函数的参数组合（即状态）
   - 边：状态转移关系
   - 缓存：存储已计算节点的结果
 
 ---
+
+```cpp
+// 矩阵中的最长递增路径
+class Solution {
+public:
+    static constexpr int dirs[4][2] = {{-1, 0}, {0, -1}, {0, 1}, {1, 0}}; 
+    
+    int longestIncreasingPath(vector<vector<int>>& matrix) {
+        if (matrix.empty() || matrix[0].empty()) return 0;
+        
+        const int m = matrix.size(), n = matrix[0].size();
+        vector<vector<int>> memo(m, vector<int>(n, -1));
+        int ans = 0;
+        
+        function<int(int, int)> dfs = [&](int i, int j) {
+            if (memo[i][j] != -1) return memo[i][j];
+            int max_path = 1;
+            for (const auto& dir : dirs) {
+                int dx = i + dir[0], dy = j + dir[1];
+                if (dx >= 0 && dx < m && dy >= 0 && dy < n && matrix[dx][dy] < matrix[i][j]) {
+                    max_path = max(max_path, 1 + dfs(dx, dy));
+                }
+            }
+            return memo[i][j] = max_path;
+        };
+        
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                ans = max(ans, dfs(i, j));
+            }
+        }
+        return ans;
+    }
+};
+```
