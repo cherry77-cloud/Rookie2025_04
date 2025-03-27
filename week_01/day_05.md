@@ -1,33 +1,4 @@
-## 一. 双序列双指针
-
-### 核心思想
-- **双序列双指针算法**适用于两个有序序列的合并、查找或匹配问题。通过两个指针分别遍历两个序列，利用有序性减少不必要的比较，将时间复杂度优化至 `O(n + m)`
-- 典型应用场景: **合并两个有序数组/链表（如归并排序的合并步骤）**, **查找两个有序序列的共同元素（如求交集、并集）**, **判断一个序列是否为另一个序列的子序列**
-
----
-
-```cpp
-ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-    ListNode* preHead = new ListNode(-1);
-    auto prev = preHead;
-    while (l1 != nullptr && l2 != nullptr) {
-        if (l1->val < l2->val) {
-            prev->next = l1;
-            l1 = l1->next;
-        } else {
-            prev->next = l2;
-            l2 = l2->next;
-        }
-        prev = prev->next;
-    }
-    prev->next = l1 == nullptr ? l2 : l1;
-    return preHead->next;
-}
-```
-
----
-
-## 二. 滑动窗口
+## 一. 滑动窗口
 
 ### 核心思想
 - 滑动窗口用于解决**子串/子数组的最优解问题（如最长无重复子串、最小覆盖子串等）**，通过动态调整窗口的左右边界，在 `O(n)` 时间内高效求解。
