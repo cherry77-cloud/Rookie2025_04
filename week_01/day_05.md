@@ -2,22 +2,11 @@
 
 ### 核心思想
 - **双序列双指针算法**适用于两个有序序列的合并、查找或匹配问题。通过两个指针分别遍历两个序列，利用有序性减少不必要的比较，将时间复杂度优化至 `O(n + m)`
-- 典型应用场景: `合并两个有序数组/链表（如归并排序的合并步骤）`, `查找两个有序序列的共同元素（如求交集、并集）`, `判断一个序列是否为另一个序列的子序列`
+- 典型应用场景: **合并两个有序数组/链表（如归并排序的合并步骤）**, **查找两个有序序列的共同元素（如求交集、并集）**, **判断一个序列是否为另一个序列的子序列**
 
 ---
 
 ```cpp
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
-
 ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
     ListNode* preHead = new ListNode(-1);
     auto prev = preHead;
