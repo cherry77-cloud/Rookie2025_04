@@ -21,7 +21,7 @@ public:
         return slow;
     }
 
-    ListNode* mergeList(ListNode* l1, ListNode* l2) {
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
         ListNode dummy;
         ListNode* cur = &dummy;
         while (l1 && l2) {
@@ -45,7 +45,7 @@ public:
         ListNode* head2 = middleNode(head);
         head = sortList(head);
         head2 = sortList(head2);
-        return mergeList(head, head2);
+        return mergeTwoLists(head, head2);
     }
 };
 ```
