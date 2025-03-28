@@ -38,7 +38,7 @@ public:
         return dummy.next;
     }
 
-    ListNode* sortList(ListNode* head) {
+    ListNode* sortList(ListNode* head) {  // 主函数
         if (head == nullptr || head->next == nullptr) {
             return head;
         }
