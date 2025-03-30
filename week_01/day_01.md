@@ -13,7 +13,7 @@
   - `Lomuto` 分区法: 使用单指针从左到右扫描，将小于基准值的元素交换到左侧。
 
 
-```c++
+```cpp
 void quickSort(vector<int>& arr, int left, int right) {
     if (left >= right) return;  // 递归终止条件
     
@@ -47,7 +47,7 @@ void quickSort(vector<int>& arr, int left, int right) {
 
 
 
-```c++
+```cpp
 int findKthElement(vector<int>& nums, int left, int right, int k) {
     if (left == right) return nums[left];  // 递归终止条件
     
@@ -83,7 +83,7 @@ int findKthElement(vector<int>& nums, int left, int right, int k) {
   - 合并：将两个有序数组合并为一个有序数组。
 
 
-```c++
+```cpp
 void mergeSort(vector<int>& arr, int left, int right) {
     if (left >= right) return;  // 递归终止条件
     
@@ -128,7 +128,7 @@ void mergeSort(vector<int>& arr, int left, int right) {
   - 合并统计：在合并两个有序子数组时，统计跨越左右两部分的逆序对。
 
 
-```c++
+```cpp
 long long countInversionPairs(vector<int>& nums, int left, int right) {
     if (left >= right) return 0;  // 递归终止条件
     
@@ -213,6 +213,61 @@ public:
         head = sortList(head);
         head2 = sortList(head2);
         return mergeTwoLists(head, head2);
+    }
+};
+```
+
+---
+
+<div align="center">
+  <h1>合并K个升序链表</h1>
+</div>
+
+**基本情况处理**
+- 如果给定的链表区间为空（`i == j`），直接返回`nullptr`。
+- 如果区间内只有一个链表（`j - i == 1`），直接返回该链表。
+
+**分治拆分**
+- 将当前区间 `[i, j)` 分成两个子区间：左区间 `[i, i + m/2)` 和右区间 `[i + m/2, j)`，其中 `m` 是区间长度。
+- 递归地对左区间和右区间调用 `mergeKLists`，分别得到合并后的左链表和右链表。
+
+**合并结果**
+- 使用 `mergeTwoLists` 函数将左链表和右链表合并成一个有序链表。
+- 返回合并后的链表。
+
+---
+
+```cpp
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        ListNode dummy;
+        auto cur = &dummy;
+        while (l1 && l2) {
+            if (l1->val <= l2->val) {
+                cur->next = l1;
+                l1 = l1->next;
+            } else {
+                cur->next = l2;
+                l2 = l2->next;
+            }
+            cur = cur->next;
+        }
+        cur->next = l1 == nullptr ? l2 : l1;
+        return dummy.next;
+    }
+
+    ListNode* mergeKLists(vector<ListNode*>& lists, int i, int j) {  // 左闭右开区间
+        int m = j - i;
+        if (m == 0)  return nullptr;
+        if (m == 1)  return lists[i];
+        auto left = mergeKLists(lists, i, i + m / 2);
+        auto right = mergeKLists(lists, i + m / 2, j);
+        return mergeTwoLists(left, right);
+    }
+
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        return mergeKLists(lists, 0, lists.size());
     }
 };
 ```
