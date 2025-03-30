@@ -271,31 +271,3 @@ public:
     }
 };
 ```
-
----
-
-## 五. 离散化
-### 核心概念
-- 离散化是一种将大范围稀疏数据压缩到紧凑连续区间的算法技术
-- 降低空间复杂度（将稀疏数据映射到密集索引）
-- 保持数据相对顺序不变，为后续算法（如树状数组、线段树）提供预处理
-
----
-
-```c++
-// 1. 排序去重
-sort(all.begin(), all.end());
-all.erase(unique(all.begin(), all.end()), all.end());
-
-// 2. 二分查找映射 - 保持相对顺序离散化
-int find(const vector<int>& all, int x) {
-    return lower_bound(all.begin(), all.end(), x) - all.begin();
-}
-
-// 3. 动态离散化 - 处理流式数据
-unordered_map<int, int> mp;
-int cnt = 0;
-int dynamic_mapping(int x) {
-    return mp.count(x) ? mp[x] : mp[x] = cnt++;
-}
-```
