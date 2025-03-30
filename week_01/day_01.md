@@ -35,7 +35,7 @@ void quickSort(vector<int>& arr, int left, int right) {
 ---
 
 <div align="center">
-  <h1>快速选择算法</h1>
+  <h1>快速选择</h1>
 </div>
 
 - 快速选择算法是一种用于查找数组中第 `k` 小或第 `k` 大元素的高效算法。它基于快速排序的分区思想，平均时间复杂度为 `O(n)`
