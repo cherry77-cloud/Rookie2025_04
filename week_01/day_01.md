@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>一. 快速排序</h1>
+  <h1>快速排序</h1>
 </div>
 
 - 快速排序是一种高效的排序算法，基于**分治法**的思想，平均时间复杂度为 `O(nlogn)`
@@ -35,7 +35,7 @@ void quickSort(vector<int>& arr, int left, int right) {
 ---
 
 <div align="center">
-  <h1>二. 快速选择算法</h1>
+  <h1>快速选择算法</h1>
 </div>
 
 - 快速选择算法是一种用于查找数组中第 `k` 小或第 `k` 大元素的高效算法。它基于快速排序的分区思想，平均时间复杂度为 `O(n)`
@@ -72,7 +72,7 @@ int findKthElement(vector<int>& nums, int left, int right, int k) {
 ---
 
 <div align="center">
-  <h1>三. 归并排序</h1>
+  <h1>归并排序</h1>
 </div>
 
 - 归并排序是一种基于**分治法**的高效排序算法，时间复杂度为 `O(nlogn)`
@@ -117,7 +117,7 @@ void mergeSort(vector<int>& arr, int left, int right) {
 ---
 
 <div align="center">
-  <h1>四. 逆序对统计</h1>
+  <h1>逆序对统计</h1>
 </div>
 
 - 逆序对统计是一种基于归并排序的算法，用于计算数组中逆序对的数量。逆序对的定义是：如果 `i < j` 且 `nums[i] > nums[j]`，则 `(i, j)` 是一个逆序对。
@@ -160,6 +160,61 @@ long long countInversionPairs(vector<int>& nums, int left, int right) {
     
     return result;
 }
+```
+
+<div align="center">
+  <h1>排序链表</h1>
+</div>
+
+- 找到链表的中间结点 `head2` 的前一个节点，并断开 `head2` 与其前一个节点的连接。这样我们就把原链表均分成了两段更短的链表。
+- **分治**，递归调用 `sortList`，分别排序 `head`（只有前一半）和 `head2`。
+- 排序后，得到了两个有序链表，合并两个有序链表，得到排序后的链表，返回链表头节点
+
+---
+
+```cpp
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        ListNode* pre = head;
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while (fast && fast->next) {
+            pre = slow;
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        pre->next = nullptr;
+        return slow;
+    }
+
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        ListNode dummy;
+        ListNode* cur = &dummy;
+        while (l1 && l2) {
+            if (l1->val <= l2->val) {
+                cur->next = l1;
+                l1 = l1->next;
+            } else {
+                cur->next = l2;
+                l2 = l2->next;
+            }
+            cur = cur->next;
+        } 
+        cur->next = l1 == nullptr ? l2 : l1;
+        return dummy.next;
+    }
+
+    ListNode* sortList(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) {
+            return head;
+        }
+        ListNode* head2 = middleNode(head);
+        head = sortList(head);
+        head2 = sortList(head2);
+        return mergeTwoLists(head, head2);
+    }
+};
 ```
 
 ---
