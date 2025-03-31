@@ -46,7 +46,7 @@ void quickSort(vector<int>& arr, int left, int right) {
   - 右部分：所有元素大于等于基准值
 - 根据分区后基准值的位置，递归地在左部分或右部分中查找第 `k` 小的元素
 
-
+---
 
 ```cpp
 int findKthElement(vector<int>& nums, int left, int right, int k) {
@@ -82,7 +82,7 @@ int findKthElement(vector<int>& nums, int left, int right, int k) {
   - 分割：将数组分成左右两部分
   - 递归排序：对左右两部分分别递归排序
   - 合并：将两个有序数组合并为一个有序数组
-
+---
 
 ```cpp
 void mergeSort(vector<int>& arr, int left, int right) {
@@ -128,6 +128,7 @@ void mergeSort(vector<int>& arr, int left, int right) {
   - 递归统计：递归统计左右两部分中的逆序对
   - 合并统计：在合并两个有序子数组时，统计跨越左右两部分的逆序对
 
+---
 
 ```cpp
 long long countInversionPairs(vector<int>& nums, int left, int right) {
