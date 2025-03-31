@@ -12,6 +12,7 @@
   - `Hoare` 分区法: 使用双指针从数组两端向中间扫描，交换不满足条件的元素
   - `Lomuto` 分区法: 使用单指针从左到右扫描，将小于基准值的元素交换到左侧
 
+---
 
 ```cpp
 void quickSort(vector<int>& arr, int left, int right) {
