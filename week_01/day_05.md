@@ -59,3 +59,44 @@ public:
 ```
 ---
 
+
+<div align="center">
+  <h1>中心扩散法</h1>
+</div>
+
+**中心扩展法**本质上是一种特殊的双指针技术，其特点是：
+
+- 对称双指针：总是成对出现（`left和right`），从中心同步向两侧移动
+- 对撞指针变体：与经典对撞指针不同，这里是同向扩展而非相向移动
+
+---
+
+```cpp
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        auto expandCenter = [&](int left, int right) {
+            while (left >= 0 && right < s.size() && s[left] == s[right]) {
+                left--;
+                right++;
+            }
+            return make_pair(left + 1, right - 1);
+        };
+        
+        int start = 0, end = 0;
+        for (int i = 0; i < s.size(); i++) {
+            auto [l1, r1] = expandCenter(i, i);
+            auto [l2, r2] = expandCenter(i, i + 1);
+            if (r1 - l1 > end - start) {
+                start = l1;
+                end = r1;
+            }
+            if (r2 - l2 > end - start) {
+                start = l2;
+                end = r2;
+            }
+        }
+        return s.substr(start, end - start + 1);
+    }
+};
+```
