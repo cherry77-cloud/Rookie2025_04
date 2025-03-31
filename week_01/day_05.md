@@ -26,4 +26,29 @@ int lengthOfLongestSubstring(string s) {
     return ans;
 }
 ```
+---
 
+<div align="center">
+  <h1>相向双指针</h1>
+</div>
+
+
+---
+```cpp
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int ans = 0, left = 0, right = height.size() - 1;
+        while (left < right) {
+            int area = min(height[left], height[right]) * (right - left);
+            ans = max(ans, area);
+            if (height[left] < height[right]) {
+                left += 1;
+            } else {
+                right -= 1;
+            }
+        }
+        return ans;
+    }
+};
+```
