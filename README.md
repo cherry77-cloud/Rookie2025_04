@@ -1,9 +1,6 @@
 ## `week_01`
-
-- [【分治排序】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_01/day_01.md) 🔥✨
 - [【滑动窗口与双指针】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_01/day_02.md) 🔥✨
 - [【二分】【前缀和】【差分】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_01/day_03.md) 🧩
-- [【指数+排列+组合枚举】](https://github.com/cherry77-cloud/Rookie2025_04/blob/main/week_01/day_04.md) 🧩
 ---
 
 
